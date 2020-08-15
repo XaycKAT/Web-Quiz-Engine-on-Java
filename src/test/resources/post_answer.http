@@ -1,0 +1,10 @@
+POST http://localhost:8000/api/quizzes/1/solve
+Content-type: application/json
+Cache-Control: no-cache
+
+{
+  "answer": [0,2]
+}
+
+
+
