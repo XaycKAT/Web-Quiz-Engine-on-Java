@@ -1,8 +1,9 @@
-package ru.kurbanov.edu.wqe.interfaces;
+package ru.kurbanov.edu.wqe.repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Deprecated
 public interface DAO<T, R> {
 
     Optional<T> get(int id);

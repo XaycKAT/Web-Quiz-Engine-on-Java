@@ -1,15 +1,16 @@
 package ru.kurbanov.edu.wqe.service;
 
 import org.springframework.stereotype.Service;
-import ru.kurbanov.edu.wqe.component.Question;
+import ru.kurbanov.edu.wqe.model.Question;
 import ru.kurbanov.edu.wqe.component.Response;
-import ru.kurbanov.edu.wqe.interfaces.DAO;
+import ru.kurbanov.edu.wqe.repository.DAO;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Deprecated
 public class QuestionDAO implements DAO<Question, Response> {
 
     private final List<Question> questions = new ArrayList<>();
@@ -26,7 +27,6 @@ public class QuestionDAO implements DAO<Question, Response> {
 
     @Override
     public void add(Question question) {
-        question.setId(questions.size() + 1);
         questions.add(question);
     }
 

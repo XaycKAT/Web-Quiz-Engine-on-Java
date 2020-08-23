@@ -1,32 +1,34 @@
-package ru.kurbanov.edu.wqe.component;
+package ru.kurbanov.edu.wqe.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
+@Entity
 public class Question {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Integer id;
+    @Id @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private Long id;
 
-    @NotBlank
+    @Column @NotEmpty
     private String title;
-    @NotBlank
+
+    @Column @NotEmpty
     private String text;
+
     @Size(min = 2)
-    @NotNull
+    @ElementCollection
     private List<String> options;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ElementCollection
     private List<Integer> answer;
 
-    public List<Integer> getAnswer() {
-        return answer == null ? new ArrayList<>() : answer;
-    }
 }
